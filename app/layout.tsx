@@ -1,13 +1,32 @@
 import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google"; // 👈 Make sure this import is present!
+// import "./globals.css";
+
+// 👈 Make sure this line is here to define "inter"!
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "My Next App",
-  description: "My PWA Landing Page",
-  manifest: "/manifest.json", // Tells mobile devices where to read app settings
+  title: "WebBridge CRM",
+  description: "WebBridge Customer Relationship Management System",
+  manifest: "/manifest.json", 
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#4f46e5",
   width: "device-width",
   initialScale: 1,
 };
+
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: LayoutProps) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        {children}
+      </body>
+    </html>
+  );
+}
