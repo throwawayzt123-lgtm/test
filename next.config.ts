@@ -11,6 +11,10 @@ const withPWA = withPWAInit({
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // This tells Next's compiler to stay quiet about custom Webpack plugins
+  experimental: {
+    turbopack: {},
+  } as any, // "as any" bypasses temporary TS type strictness if needed
 };
 
 export default withPWA(nextConfig);
